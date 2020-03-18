@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head :: main-header('Search')" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar :: navbar" />
+<div class="card col d-flex justify-content-center text-center">
+    <h1 id="imgDate"></h1>
+    <div class="card-body ">
+        <h5 class="card-title"></h5>
+        <p class="description"></p>
+    </div>
+    <div class="imgDiv">
+        <a href="#" class="btn btn-primary">See all past pictures</a>
+    </div>
+</div>
+
+
+<th:block th:replace="fragments/scripts :: scripts" />
+
+
+</body>
+</html>

@@ -10,10 +10,13 @@ $(document).ready(function(){
 
             }).then(function (data) {
                 console.log(data);
+                $('.imgDiv').append(`<img class="card-img-top" src="${data.hdurl}" alt="" />`);
+                $('imgDate').append(data.date);
+                $('.card-title').append(data.title + " by: " + data.copyright);
                 $('.description').append(data.explanation);
-
-                $('.card').prepend(`<img class="card-img-top" src="${data.hdurl}" alt="" />`);
                 return data;
+
+
 
             })
 

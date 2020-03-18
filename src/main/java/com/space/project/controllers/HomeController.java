@@ -11,9 +11,9 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/library")
+    @GetMapping("/apod")
     public String library(){
-        return "library";
+        return "apod";
     }
 
 }
