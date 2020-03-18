@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Search pictures here: </title>
+    <th:block th:replace="fragments/head :: main-header('Search')" />
 </head>
 <body>
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<div id="test"></div>
 
 
-
+<th:block th:replace="fragments/scripts :: scripts" />
 <script>
-    
+    "use strict";
+    $(document).ready(function(){
+        // const root = 'https://images-api.nasa.gov';
+        // const planetaryEndPoint = '/planetary';
+        return fetch("https://api.nasa.gov/planetary/apod?api_key=key")
+        .then(function (res) {
+            return res.json();
+            //get all the data from the req
+
+        }).then(function (data) {
+            console.log(data);
+            $('#test').append(data.explanation);
+            return data;
+
+            })
+
+    });
 </script>
 
 </body>
