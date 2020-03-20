@@ -19,11 +19,10 @@ public class UserController {
     private UserRepository userDao;
 
     //create user here
-    public String saveUser(@Valid User user, Errors validation, Model m){
+    public void saveUser(@Valid User user, Errors validation, Model m){
         String username = user.getUsername();
         User existingUsername = userDao.findByUsername(username);
         User existingEmail = userDao.findByEmail(user.getEmail());
-
 
     }
 }
