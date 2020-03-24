@@ -16,4 +16,7 @@ public class HomeController {
         return "apod";
     }
 
+    @GetMapping("/weather")
+    public String weather() {return "weather";}
+
 }

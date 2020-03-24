@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head :: main-header('Search')"/>
+</head>
+<body>
+<th:block th:replace="fragments/navbar :: navbar"/>
+
+<div id="test">
+
+</div>
+
+<th:block th:replace="fragments/scripts :: scripts"/>
+<script>
+
+    function getDataFromWeatherApi() {
+        var marsWeatherApi = "https://api.nasa.gov/insight_weather/" + "?" + libraryKey + "&feedtype=json&ver=1.0";
+        $.ajax(marsWeatherApi).done(function (JSO) {
+            var sol = JSO.sol_keys[6];
+            //current sol
+            console.log("SOL" + JSO.sol_keys[6]);
+
+            //atmospheric temp, degree celsius
+            console.log(JSO[sol].AT.av);
+
+            //atmospheric pressure, pascals
+            console.log(JSO[sol].PRE.av);
+
+            //horizontal wind speed, metres per second
+            console.log(JSO[sol].HWS.av)
+
+        })
+
+    }
+
+    getDataFromWeatherApi();
+
+</script>
+
+</body>
+</html>
