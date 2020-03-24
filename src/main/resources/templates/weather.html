@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="fragments/head :: main-header('Search')"/>
+    <th:block th:replace="fragments/head :: main-header('InSight')"/>
+    <style>
+        #insight{
+            background-image: url("img/insight-pic.jpg");
+            background-size: cover;
+            height: 100vh;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-<div id="test">
 
+<div class="jumbotron jumbotron-fluid" id="insight">
+    <div class="container">
+        <h1 class="display-4">Latest Weather at Elysium Planitia</h1>
+        <p class="lead">This provides summary data each of the last seven available Sols (Martian Days). As more data from a particular Sol are downlinked from the spacecraft (sometimes several days later), these values are recalculated, and consequently may change as more data are received on Earth.</p>
+        <div id="sol-one" class="display-3">
+            <div id="sol-one-temp">
+
+            </div>
+
+        </div>
+
+    </div>
 </div>
-
 <th:block th:replace="fragments/scripts :: scripts"/>
 <script>
 
@@ -17,8 +35,13 @@
         var marsWeatherApi = "https://api.nasa.gov/insight_weather/" + "?" + libraryKey + "&feedtype=json&ver=1.0";
         $.ajax(marsWeatherApi).done(function (JSO) {
             var sol = JSO.sol_keys[6];
+            var solTempCelsius = JSO[sol].AT.av;
             //current sol
             console.log("SOL" + JSO.sol_keys[6]);
+            $(' #sol-one ').prepend("SOL " + sol);
+            $(' #sol-one-temp ').append("Atmospheric Temperature (C): " + solTempCelsius);
+
+
 
             //atmospheric temp, degree celsius
             console.log(JSO[sol].AT.av);
